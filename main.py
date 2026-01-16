@@ -86,10 +86,10 @@ def delete_car(id):
 
 @app.route('/cars/search')
 def search_car():
-  brand = request.args.get('brand')
+  brand = request.args.get('brand').lower()
   tmp_cars = []
   for car in cars:
-    if brand in car['brand']:
+    if brand in car['brand'].lower():
       tmp_cars.append(car)
   
   return render_template('car/search_cars.html',
